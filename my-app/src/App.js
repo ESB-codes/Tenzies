@@ -96,7 +96,7 @@ function roll(){
         {diceElements}
       </div>
     <button className="roll--dice" onClick={roll}>{tenzies ? "New Game": "Roll Dice"} </button>
-    <h2>Counter: {counter}</h2>
+    <h3>counter: {counter}</h3>
     </main>
   )
 }
