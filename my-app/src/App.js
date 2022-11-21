@@ -33,6 +33,9 @@ let [newDice, setNewDice]=React.useState(allNewDice())
 
 let [tenzies, setTenzies]=React.useState(false)
 
+// initailising a counter
+let[counter, setCounter]=React.useState(0)
+
 React.useEffect(()=>{
   // if all dices have isHeld true and values are same, let user know they won the game
   let allHeld= newDice.every(x=> x.isHeld)
@@ -71,6 +74,7 @@ let diceElements= newDice.map(item => <Die
 
 function roll(){
   if (!tenzies){
+    setCounter(prev=> prev+1)
     setNewDice(prev=> prev.map(item=>{
       return item.isHeld? item : generateDice()
     }))
@@ -78,6 +82,7 @@ function roll(){
   else{
     setTenzies(false)
     setNewDice(allNewDice())
+    setCounter(0)
   }
 }
 
@@ -91,6 +96,7 @@ function roll(){
         {diceElements}
       </div>
     <button className="roll--dice" onClick={roll}>{tenzies ? "New Game": "Roll Dice"} </button>
+    <h2>Counter: {counter}</h2>
     </main>
   )
 }
